@@ -1,0 +1,30 @@
+# LLMs and Agents
+openai
+langchain>=0.1.16
+langgraph>=0.0.21
+
+# Vector search
+faiss-cpu  # Replace with pgvector if using PostgreSQL embeddings
+
+# Web interface
+streamlit>=1.30
+fastapi
+uvicorn
+
+# Database
+psycopg2-binary  # For PostgreSQL
+sqlalchemy
+sqlite-utils
+
+# Visualization
+plotly
+altair
+matplotlib
+
+# Utilities
+python-dotenv
+pandas
+pyyaml
+
+# Testing
+pytest

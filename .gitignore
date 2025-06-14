@@ -1,0 +1,33 @@
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter and IPython
+.ipynb_checkpoints
+*.ipynb
+
+# Environment files
+.env
+.env.*
+
+# DB files
+*.sqlite
+*.db
+
+# System
+.DS_Store
+Thumbs.db
