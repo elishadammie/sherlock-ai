@@ -22,7 +22,8 @@ Original Question: {question}
 SQL Query: {sql_query}
 Data Result: {result}
 
-Synthesize a final, conversational, and confident answer. Be direct and avoid generic phrases like "It looks like".
+Synthesize a final, conversational, and confident answer. Be direct and avoid generic phrases.
+**IMPORTANT**: Ensure your response is well-formatted with proper spacing between all words, numbers, and currency symbols.
 """
     
     prompt = ChatPromptTemplate.from_template(prompt_template)
