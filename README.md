@@ -51,6 +51,8 @@ sherlock-ai/
 
 ````
 
+The database used for this demo is the popular chinook database it is available for download here https://www.sqlitetutorial.net/sqlite-sample-database/
+
 ---
 
 ## ⚙️ Quick Start

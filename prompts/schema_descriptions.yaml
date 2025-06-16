@@ -1,0 +1,80 @@
+# sherlock-ai/prompts/schema_descriptions.yaml
+
+tables:
+  - name: employees
+    description: "Contains information about company employees, including their roles and hiring details. Can be used to analyze employee performance or internal organizational structure. The 'ReportsTo' column is a self-referencing key to identify managers."
+    columns:
+      - name: EmployeeId
+        description: "Primary key for the employees table."
+      - name: ReportsTo
+        description: "The ID of the employee's manager. Links to another employee's EmployeeId."
+
+  - name: customers
+    description: "Stores data about customers, including their location and which employee is their support representative."
+    columns:
+      - name: CustomerId
+        description: "Primary key for the customers table."
+      - name: SupportRepId
+        description: "The ID of the employee assigned to this customer. Foreign key to the employees table."
+
+  - name: invoices
+    description: "Contains all sales invoices. Each invoice is linked to a customer and includes billing details and the total amount."
+    columns:
+      - name: InvoiceId
+        description: "Primary key for the invoices table."
+      - name: CustomerId
+        description: "Foreign key linking to the customer who made the purchase."
+      - name: Total
+        description: "The total amount for the invoice."
+
+  - name: invoice_items
+    description: "A junction table that details the line items for each invoice. It links invoices to specific tracks."
+    columns:
+      - name: InvoiceLineId
+        description: "Primary key for the invoice items table."
+      - name: InvoiceId
+        description: "Foreign key linking to the invoices table."
+      - name: TrackId
+        description: "Foreign key linking to the tracks table."
+      - name: UnitPrice
+        description: "The price of a single track."
+      - name: Quantity
+        description: "The number of units of the track sold. Always 1 for this dataset."
+
+  - name: tracks
+    description: "Contains information about individual music tracks, including their genre, album, artist, and media type."
+    columns:
+      - name: TrackId
+        description: "Primary key for the tracks table."
+      - name: AlbumId
+        description: "Foreign key linking to the albums table."
+      - name: GenreId
+        description: "Foreign key linking to the genres table."
+      - name: Name
+        description: "The name of the track."
+
+  - name: albums
+    description: "Stores information about music albums. Each album is linked to an artist."
+    columns:
+      - name: AlbumId
+        description: "Primary key for the albums table."
+      - name: ArtistId
+        description: "Foreign key linking to the artists table."
+
+  - name: artists
+    description: "Contains the names of the music artists."
+    columns:
+      - name: ArtistId
+        description: "Primary key for the artists table."
+
+  - name: genres
+    description: "A list of music genres, such as 'Rock' or 'Jazz'."
+
+  - name: media_types
+    description: "A list of media types, such as 'MPEG audio file'."
+
+  - name: playlists
+    description: "Stores information about user-created playlists."
+
+  - name: playlist_track
+    description: "A junction table linking tracks to playlists."
