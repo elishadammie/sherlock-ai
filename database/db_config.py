@@ -33,6 +33,17 @@ def get_db_engine() -> Engine:
     
     return engine
 
+# import os
+# from sqlalchemy import create_engine
+
+# def get_db_engine():
+#     engine = create_engine(
+#         f"snowflake://{os.environ['SNOWFLAKE_USER']}:{os.environ['SNOWFLAKE_PASSWORD']}"
+#         f"@{os.environ['SNOWFLAKE_ACCOUNT']}/{os.environ['SNOWFLAKE_DATABASE']}/{os.environ['SNOWFLAKE_SCHEMA']}"
+#         f"?warehouse={os.environ['SNOWFLAKE_WAREHOUSE']}"
+#     )
+#     return engine
+
 if __name__ == '__main__':
     # A simple test to verify the connection when the script is run directly
     try:

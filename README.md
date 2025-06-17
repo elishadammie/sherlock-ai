@@ -6,14 +6,24 @@
 
 ## 🚀 Project Overview
 
-Sherlock AI is an agent-powered analytics assistant that lets users query structured business data using natural language. It automatically:
+An Agent-Powered Conversational BI Assistant
 
-- Generates SQL queries
-- Executes them on a demo PostgreSQL/SQLite database
-- Visualizes results
-- Explains insights in plain English
+Sherlock AI is an advanced, conversational business intelligence (BI) assistant designed to bridge the gap between complex business data and natural language questions. It leverages a multi-agent system, orchestrated by LangGraph, to understand user queries, generate and execute SQL, synthesize insights, and create data visualizations on the fly.
 
-Built with LangChain, LangGraph, OpenAI's GPT models, and a lightweight UI using Streamlit or FastAPI.
+✨ Core Features
+- Natural Language to SQL: Ask complex questions like "What were the total sales for the top 5 countries?" and get immediate results.
+
+- Agentic Reasoning: Utilizes a graph-based agent system that can reason about the steps needed to answer a question.
+
+- Self-Correction: The agent can debug its own SQL queries. If a query fails, it analyzes the error and attempts to rewrite it correctly.
+
+- Insight Synthesis: Goes beyond raw data by using an LLM to generate a clear, human-readable summary of the findings.
+
+- Automatic Visualization: Intelligently chooses the best chart type (bar, pie, etc.) to visualize the data and generates a plot using Plotly.
+
+- Interactive UI: A clean, modern, and user-friendly interface built with Streamlit that showcases the agent's full "thought process."
+
+Built with LangChain, LangGraph, Plotly, SQLite, SQLAlchemy, OpenAI's GPT models, and a lightweight UI using Streamlit .
 
 ---
 
@@ -24,11 +34,11 @@ Built with LangChain, LangGraph, OpenAI's GPT models, and a lightweight UI using
 | LLM Backbone        | OpenAI GPT-4 / GPT-3.5-turbo                                          |
 | Agent Orchestration | LangChain + LangGraph                                                 |
 | Embeddings          | FAISS / pgvector                                                      |
-| Visualization       | Plotly, Altair, Matplotlib                                            |
-| Backend             | Streamlit or FastAPI                                                  |
-| Database            | PostgreSQL (preferred) or SQLite                                      |
+| Visualization       | Plotly Matplotlib                                                     |
+| Backend             | Streamlit                                                             |
+| Database            | SQLite                                                                |
 | Tooling             | LangChain SQLToolkit, custom agents, JSON/Markdown exports            |
-| Testing             | Pytest, LangChain Tracer                                              |
+| Testing             | LangChain Tracer                                                      |
 
 ---
 
