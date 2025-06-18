@@ -3,6 +3,7 @@
 import os
 import httpx  # <-- 1. IMPORT httpx
 from dotenv import load_dotenv
+import streamlit as st
 from langchain_openai import ChatOpenAI # type: ignore
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
@@ -12,11 +13,17 @@ from app.state import AgentState
 from app.agents.schema_retriever import get_enhanced_schema
 
 # Load environment variables from .env file
-load_dotenv()
+# load_dotenv()
 
-# Ensure the OpenAI API key is set
-if "OPENAI_API_KEY" not in os.environ:
-    raise ValueError("OPENAI_API_KEY environment variable not set.")
+# # Ensure the OpenAI API key is set
+# if "OPENAI_API_KEY" not in os.environ:
+#     raise ValueError("OPENAI_API_KEY environment variable not set.")
+
+
+try:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+except Exception:
+    raise ValueError("OPENAI_API_KEY not found in Streamlit secrets.")
 
 def create_sql_generator_prompt() -> ChatPromptTemplate:
     """
