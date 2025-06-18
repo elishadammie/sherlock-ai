@@ -49,7 +49,9 @@ Your decision:
     llm = ChatOpenAI(model="gpt-4o", temperature=0.0, http_client=http_client)
     chain = prompt | llm
 
-    original_question = state['messages'][0].content   # type: ignore
+    # The original question is the first message in the state
+    original_question = state['messages'][0].content
+    
     response = chain.invoke({
         "question": original_question,
         "columns": ", ".join(df.columns)
@@ -68,21 +70,26 @@ Your decision:
         
         print(f"LLM decided to create a '{chart_type}' chart with columns '{col1}' and '{col2}'.")
         
-        # --- THE DEFINITIVE FIX ---
-        # 1. We use the original_question, which we know is a string, for the title.
-        # 2. We explicitly set the template to "plotly_dark" to match the UI.
-        chart_title = original_question 
+       
+        # Bypassing the title altogether
         template = "plotly_dark"
+        # template = "plotly_white"
         
         fig = None
         if chart_type == 'pie':
-            fig = px.pie(df, names=col1, values=col2, title=chart_title, template=template)
+            fig = px.pie(df, names=col1, values=col2, template=template)
         elif chart_type == 'bar':
-            fig = px.bar(df, x=col1, y=col2, title=chart_title, template=template)
+            fig = px.bar(df, x=col1, y=col2, template=template)
         elif chart_type == 'line':
-            fig = px.line(df, x=col1, y=col2, title=chart_title, template=template)
+            fig = px.line(df, x=col1, y=col2, template=template)
         
         if fig:
+            # Update figure layout for better readability on a dark theme
+            fig.update_layout(
+                font_color="white",
+                title_font_color="white",
+                legend_title_font_color="white"
+            )
             png_image = fig.to_image(format="png")
             return {"chart_image": png_image}
 
